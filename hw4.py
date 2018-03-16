@@ -25,7 +25,12 @@ def list_length(head):
     Returns:
         (int) The length of the linked list
     """
-    pass
+    node = self
+    len = 1
+    while node.next_node != None:
+        len = len + 1
+        node.next_node
+    return len
 
 
 def add_head(head, data):
@@ -46,7 +51,9 @@ def add_head(head, data):
     Returns:
         (Node) the head of the new linked list that includes 'data'
     """
-    pass
+    newHead = Node(data)
+    newHead.next_node = head
+    return newHead
 
 
 def add_tail(head, data):
@@ -67,7 +74,14 @@ def add_tail(head, data):
     Returns:
         (Node) the head of the new linked list that includes 'data'
     """
-    pass
+    if head == None:
+        head = Node(data)
+    else:
+        current = head
+        while (current.next_node != None):
+            current = current.next_node
+        current.next_node = Node(data)
+    return head
 
 
 def remove_position(head, position):
@@ -83,7 +97,15 @@ def remove_position(head, position):
     Output:
         the head of the linked list.
     """
-    pass
+    temp = head
+    if position == 0:
+        return temp.next_node
+
+    while position - 1 > 0:
+        head = head.next_node
+        position -= 1
+    head.next_node = head.next_node.next_node
+    return temp
 
 
 def find_cycle(head):
@@ -100,4 +122,11 @@ def find_cycle(head):
     Output:
         (bool) whether or not there is a cycle in the linked list.
     """
-    pass
+    x = []
+    while head:
+        if head in x:
+            return True
+        else:
+            x.append(head)
+        head = head.next_node
+    return False
