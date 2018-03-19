@@ -25,7 +25,7 @@ def list_length(head):
     Returns:
         (int) The length of the linked list
     """
-    node = self
+    node = head
     len = 1
     while node.next_node != None:
         len = len + 1
